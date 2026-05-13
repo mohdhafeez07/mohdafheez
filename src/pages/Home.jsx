@@ -339,7 +339,7 @@ const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Full-Stack Developer <span className="role-sep">/</span> Software Architect
+                            Full-Stack Developer <span className="role-sep">/</span> Software Engineer
                         </motion.div>
 
                         {/* Description */}
@@ -417,29 +417,8 @@ const Home = () => {
                         </div>
 
                         {/* Floating badges */}
-                        <motion.div
-                            className="floating-badge badge-react"
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                        >
-                            ⚛️ React
-                        </motion.div>
-                        <motion.div
-                            className="floating-badge badge-java"
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                        >
-                            ☕ Java
-                        </motion.div>
-                        <motion.div
-                            className="floating-badge badge-php"
-                            animate={{ y: [0, -6, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                        >
-                            🐘 PHP
-                        </motion.div>
-                    </motion.div>
-                </div>
+                       
+                
 
                 {/* Scroll indicator */}
                 <motion.div
