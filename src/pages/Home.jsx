@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
     ArrowRight, Download, MapPin, Phone, Mail, ExternalLink,
-    Code2, ChevronDown, Sparkles, Star
+    Code2, ChevronDown, Sparkles, Star, Zap, Shield
 } from 'lucide-react';
 
 // Project Assets
