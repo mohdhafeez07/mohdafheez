@@ -39,6 +39,8 @@
   --font-mono: 'Fira Code', monospace;
 
   /* Spacing */
+  --nav-height: 80px;
+  --nav-height-mobile: 72px;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -72,7 +74,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: var(--nav-height);
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: var(--nav-height-mobile);
+  }
 }
 
 body {
@@ -158,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 800;
   font-family: var(--font-heading);
   color: var(--text-primary);

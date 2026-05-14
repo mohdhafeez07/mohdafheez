@@ -77,7 +77,7 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <p>
-                        © {new Date().getFullYear()} Mohammed Afheez. Made with <Heart size={12} className="heart-icon" /> in Dubai, UAE.
+                        © {new Date().getFullYear()} Mohammed Afheez. 
                     </p>
                     <p>All rights reserved.</p>
                 </div>
