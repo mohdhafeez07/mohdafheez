@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, useInView } from 'framer-motion';
 import {
     ArrowRight, Download, MapPin, Phone, Mail, ExternalLink,
-    Code2, ChevronDown, Sparkles, Star, Zap, Shield
+    Code2, ChevronDown, Sparkles, Star, Zap, Shield, Github
 } from 'lucide-react';
 
 // Project Assets
@@ -17,6 +18,7 @@ import dnalystLogo from '../assets/dnalyst-nobg.png';
 import urbanLaundryLogo from '../assets/UrbanLaundry.png';
 import iotLogo from '../assets/IoT.png';
 import malnadNestsLogo from '../assets/images.jpeg';
+import phoenixLogo from '../assets/phoenix.png';
 
 import './Home.css';
 
@@ -68,7 +70,7 @@ const PROJECTS = [
         image: thermoLogo,
     },
     {
-        name: 'T Perfumery',
+        name: 'BR Perfumery',
         category: 'E-Commerce',
         url: '#',
         color: '#ec4899',
@@ -164,7 +166,8 @@ const PROJECTS = [
         color: '#dc143c',
         desc: 'Real-time inventory tracking and warehouse management solution with barcode support and stock alerts.',
         tags: ['React', 'Node.js', 'Express'],
-        image: urbanLaundryLogo,
+        image: phoenixLogo,
+        style: { maxWidth: '45%', maxHeight: '45%' },
     },
 ];
 
@@ -378,6 +381,10 @@ const Home = () => {
                                 </svg>
                                 LinkedIn
                             </a>
+                            <a href="https://github.com/mohdhafeez07" target="_blank" rel="noopener noreferrer" className="social-pill">
+                                <Github size={16} />
+                                GitHub
+                            </a>
                         </motion.div>
                     </motion.div>
 
@@ -467,7 +474,7 @@ const Home = () => {
                                 <span className="gradient-text">Based in Dubai</span>
                             </h2>
                             <p className="about-bio">
-                                I'm <strong>Mohammed Afheez</strong>, a passionate Full-Stack Developer with 5+ years of hands-on experience delivering scalable web applications, secure RESTful APIs, and responsive UIs.
+                                I'm <strong>Mohammed Afheez</strong>, a passionate Full-Stack Developer with hands-on experience delivering scalable web applications, secure RESTful APIs, and responsive UIs.
                             </p>
                             <p className="about-bio">
                                 My core stack includes <strong>Java Spring Boot</strong>, <strong>React.js</strong>, <strong>PHP</strong>, and <strong>MySQL</strong>. I've worked with clients across UAE, India, and beyond — from pharmaceutical companies and real estate platforms to tourism portals and ERP systems.
@@ -619,7 +626,7 @@ const Home = () => {
                             >
                                 {/* Card header */}
                                 <div className="proj-image-container">
-                                    <img src={proj.image} alt={proj.name} className="proj-logo" />
+                                    <img src={proj.image} alt={proj.name} className="proj-logo" style={proj.style || {}} />
                                     <span className="proj-category">{proj.category}</span>
                                 </div>
 

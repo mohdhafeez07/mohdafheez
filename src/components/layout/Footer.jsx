@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Mail, MapPin, Phone, Heart } from 'lucide-react';
+import { Linkedin, Mail, MapPin, Phone, Heart, Github } from 'lucide-react';
 import favicon from '../../assets/Favicon.png';
 import './Footer.css';
 
@@ -33,6 +33,9 @@ const Footer = () => {
                             </a>
                             <a href="https://www.linkedin.com/in/mohammed-afheez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-btn">
                                 <Linkedin size={18} />
+                            </a>
+                            <a href="https://github.com/mohdhafeez07" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="social-btn">
+                                <Github size={18} />
                             </a>
                             <a href="mailto:hafeez07.mohd@gmail.com" aria-label="Email" className="social-btn">
                                 <Mail size={18} />

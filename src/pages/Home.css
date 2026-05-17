@@ -709,6 +709,9 @@
 }
 
 .proj-category {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -718,6 +721,7 @@
     color: var(--proj-color, var(--red));
     border-radius: 6px;
     border: 1px solid rgba(255, 0, 0, 0.15);
+    z-index: 2;
 }
 
 .proj-body {
