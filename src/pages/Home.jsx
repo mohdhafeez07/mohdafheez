@@ -174,7 +174,7 @@ const PROJECTS = [
 
 
 const STATS = [
-    { value: '5+', label: 'Years Experience', icon: <Star size={18} /> },
+    { value: '2+', label: 'Years Experience', icon: <Star size={18} /> },
     { value: '20+', label: 'Projects Delivered', icon: <Zap size={18} /> },
     { value: '100%', label: 'Client Satisfaction', icon: <Shield size={18} /> },
     { value: '10+', label: 'Happy Clients', icon: <Sparkles size={18} /> },
