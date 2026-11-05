@@ -1,0 +1,118 @@
+.mo {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    visibility: hidden;
+    overflow-y: auto;
+    background: #1e2119;
+    color: #f4f4ed;
+}
+
+.mo-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: end;
+    min-height: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: calc(var(--nav-h) + 32px) clamp(18px, 4vw, 56px) 44px;
+}
+
+.mo-links {
+    display: grid;
+}
+.mo-link {
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(244, 244, 237, 0.14);
+}
+.mo-link-inner {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 6px 0;
+}
+.mo-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgba(244, 244, 237, 0.6);
+}
+.mo-link.is-active .mo-num {
+    color: var(--accent);
+}
+.mo-text {
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    transition: transform 0.6s var(--ease), color 0.3s;
+}
+.mo-link:hover .mo-text,
+.mo-link:focus-visible .mo-text {
+    transform: translateX(16px);
+    color: var(--accent);
+}
+.mo-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.mo-side {
+    display: grid;
+    gap: 30px;
+    align-content: end;
+    justify-items: start;
+}
+.mo-label {
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 244, 237, 0.65);
+}
+.mo-email {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    word-break: break-all;
+}
+.mo-email:hover {
+    color: var(--accent);
+}
+.mo-socials {
+    display: grid;
+    gap: 8px;
+}
+.mo-socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(244, 244, 237, 0.85);
+    transition: color 0.3s;
+}
+.mo-socials a:hover {
+    color: var(--accent);
+}
+.mo-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+}
+
+@media (max-width: 760px) {
+    .mo-inner {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 36px;
+    }
+    .mo-side {
+        align-content: start;
+    }
+}

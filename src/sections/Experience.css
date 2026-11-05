@@ -1,0 +1,217 @@
+.xp-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+    gap: clamp(40px, 6vw, 112px);
+    align-items: start;
+}
+
+/* Sticky index */
+.xp-aside {
+    position: sticky;
+    top: calc(var(--nav-h) + 40px);
+}
+.xp-aside-inner {
+    display: grid;
+    gap: 28px;
+}
+.xp-counter {
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    line-height: 0.82;
+}
+.xp-counter-num {
+    font-size: clamp(7rem, 15vw, 15rem);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    font-variant-numeric: tabular-nums;
+    animation: xpRoll 0.8s var(--ease) both;
+}
+.xp-counter-total {
+    margin-top: 0.6em;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-3);
+}
+.xp-aside-meta {
+    display: grid;
+    gap: 6px;
+    animation: xpFade 0.7s var(--ease) both;
+}
+.xp-aside-company {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--accent-fg);
+}
+.xp-aside-period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+.xp-dots {
+    display: flex;
+    gap: 8px;
+}
+.xp-dots li {
+    width: 28px;
+    height: 2px;
+    background: var(--line-2);
+    transition: background 0.5s, width 0.6s var(--ease);
+}
+.xp-dots li.is-active {
+    width: 56px;
+    background: var(--text);
+}
+
+@keyframes xpRoll {
+    from {
+        transform: translateY(100%);
+    }
+}
+@keyframes xpFade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+/* Role list */
+.xp-item {
+    padding: clamp(36px, 5vw, 56px) 0;
+    border-top: 1px solid var(--line-2);
+    transition: opacity 0.6s var(--ease);
+}
+.xp-item:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+@media (min-width: 961px) {
+    .xp-item:not(.is-active) {
+        opacity: 0.62;
+    }
+}
+
+.xp-head {
+    display: grid;
+    gap: 8px;
+}
+.xp-period {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+.xp-badge {
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+    color: var(--accent-fg);
+    font-size: 0.65rem;
+}
+.xp-role {
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+.xp-company {
+    font-weight: 500;
+}
+.xp-company span {
+    color: var(--text-3);
+    font-weight: 400;
+}
+
+.xp-points {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+}
+.xp-points li {
+    position: relative;
+    padding-left: 28px;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-2);
+}
+.xp-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 14px;
+    height: 1px;
+    background: var(--text-3);
+}
+
+/* Credentials */
+.creds {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+    gap: clamp(40px, 6vw, 112px);
+    margin-top: clamp(80px, 10vw, 140px);
+    padding-top: 40px;
+    border-top: 1px solid var(--line-2);
+}
+.cred-label {
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+.cred-title {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+.cred-sub {
+    margin-top: 8px;
+    color: var(--text-2);
+}
+.cred-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 32px;
+}
+.cred-list li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.97rem;
+}
+.cred-list span {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding-top: 4px;
+    color: var(--text-3);
+}
+
+@media (max-width: 960px) {
+    .xp-grid,
+    .creds {
+        grid-template-columns: 1fr;
+    }
+    .xp-aside {
+        display: none;
+    }
+}
+@media (max-width: 560px) {
+    .cred-list {
+        grid-template-columns: 1fr;
+    }
+}

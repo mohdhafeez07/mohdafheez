@@ -2,21 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mohammed Afheez — Full-Stack Developer | Dubai, UAE</title>
-    <meta name="description" content="Mohammed Afheez is a Full-Stack Developer based in Dubai, UAE, specializing in React, Java Spring Boot, PHP, and scalable web applications." />
-    <meta name="keywords" content="Mohammed Afheez, Full Stack Developer, React Developer, Java Spring Boot, PHP Developer, Web Developer Dubai, UAE Developer" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="theme-color" content="#09090b" />
+    <!-- Apply saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        var root = document.documentElement;
+        root.dataset.theme = t;
+        // Reveal animations only when motion is welcome; never leave content hidden.
+        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          root.classList.add('motion');
+          setTimeout(function () { root.classList.add('reveal-fallback'); }, 6000);
+        }
+        if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f4ed');
+      })();
+    </script>
+
+    <title>Mohammed Afheez — Full-Stack Developer in Dubai | Next.js, React, Node.js</title>
+    <meta name="description" content="Mohammed Afheez is a Full-Stack Developer in Dubai, UAE with 2+ years building scalable web applications, APIs and CRM integrations with Next.js, React, Node.js and Java Spring Boot on AWS and Vercel." />
     <meta name="author" content="Mohammed Afheez" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Mohammed Afheez — Full-Stack Developer" />
-    <meta property="og:description" content="Building professional, scalable, and high-performance web solutions in Dubai." />
+    <link rel="canonical" href="https://mohdafheez.vercel.app/" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mohammedafheez.netlify.app/" />
+    <meta property="og:site_name" content="Mohammed Afheez" />
+    <meta property="og:title" content="Mohammed Afheez — Full-Stack Developer" />
+    <meta property="og:description" content="Full-stack developer in Dubai building fast, scalable web products with Next.js, React, Node.js and Spring Boot." />
+    <meta property="og:url" content="https://mohdafheez.vercel.app/" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Mohammed Afheez — Full-Stack Developer" />
+    <meta name="twitter:description" content="Full-stack developer in Dubai building fast, scalable web products with Next.js, React, Node.js and Spring Boot." />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mohammed Afheez",
+        "jobTitle": "Full-Stack Developer",
+        "url": "https://mohdafheez.vercel.app/",
+        "email": "mailto:hafeez07.mohd@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" },
+        "worksFor": { "@type": "Organization", "name": "Rino Invest Group" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "P.A. College of Engineering" },
+        "knowsAbout": ["Next.js", "React", "Node.js", "Java Spring Boot", "AWS", "Technical SEO", "Bitrix24"],
+        "sameAs": ["https://www.linkedin.com/in/mohammed-afheez", "https://github.com/mohdhafeez07"]
+      }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

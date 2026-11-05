@@ -1,118 +1,105 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import favicon from '../../assets/Favicon.png';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { NAV } from '../../data/content';
+import { HERO } from '../../data/hero.config';
+import { scrollToTarget, ScrollTrigger } from '../../lib/motion';
+import ThemeToggle from '../ThemeToggle';
+import Magnetic from '../Magnetic';
+import MenuOverlay from './MenuOverlay';
+import { WhatsAppIcon } from '../BrandIcons';
 import './Navbar.css';
 
+/**
+ * Fixed top bar: two-line logo (left); theme toggle, "Let's talk" pill and
+ * a square menu button (right). Hides while scrolling down.
+ */
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState('home');
-    const location = useLocation();
+    const [open, setOpen] = useState(false);
+    const [active, setActive] = useState('');
+    const header = useRef(null);
+    const progress = useRef(null);
+    const toggleBtn = useRef(null);
 
+    /* Scroll progress + hide-on-scroll-down + background once off the top */
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 30);
-            // Active section tracking
-            const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-            for (const id of sections.reverse()) {
-                const el = document.getElementById(id);
-                if (el && window.scrollY >= el.offsetTop - 120) {
-                    setActiveSection(id);
-                    break;
-                }
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const st = ScrollTrigger.create({
+            start: 0,
+            end: 'max',
+            onUpdate: self => {
+                if (progress.current) progress.current.style.transform = `scaleX(${self.progress})`;
+                header.current?.classList.toggle('is-hidden', self.direction === 1 && self.scroll() > 200);
+                header.current?.classList.toggle('is-scrolled', self.scroll() > 24);
+            },
+        });
+        return () => st.kill();
     }, []);
 
-    const closeMenu = () => setIsOpen(false);
+    /* Active section (shown in the menu) */
+    useEffect(() => {
+        const io = new IntersectionObserver(
+            entries => entries.forEach(e => e.isIntersecting && setActive(e.target.id)),
+            { rootMargin: '-45% 0px -50% 0px' }
+        );
+        ['top', ...NAV.map(n => n.id)].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) io.observe(el);
+        });
+        return () => io.disconnect();
+    }, []);
 
-    const scrollTo = (id) => {
-        closeMenu();
-        if (location.pathname !== '/') {
-            window.location.href = `/#${id}`;
-            return;
-        }
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    const close = useCallback((returnFocus = true) => {
+        setOpen(false);
+        if (returnFocus) toggleBtn.current?.focus({ preventScroll: true });
+    }, []);
+
+    const goTop = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        setOpen(false);
+        scrollToTarget('#top');
     };
 
-    const navLinks = [
-        { label: 'Home', id: 'home' },
-        { label: 'About', id: 'about' },
-        { label: 'Skills', id: 'skills' },
-        { label: 'Projects', id: 'projects' },
-        { label: 'Contact', id: 'contact' },
-    ];
-
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="container nav-container">
-                {/* Logo */}
-                <button className="logo" onClick={() => scrollTo('home')}>
-                    <div className="logo-mark">
-                        <img src={favicon} alt="Logo" style={{ width: '100%', height: '100%', borderRadius: 'inherit' }} />
-                    </div>
-                    <span className="logo-text">Mohammed Afheez</span>
-                </button>
+        <>
+            <header ref={header} className={`nav ${open ? 'is-open' : ''}`}>
+                <div className="nav-progress" aria-hidden="true"><span ref={progress} /></div>
+                <div className="nav-inner">
+                    <a href={HERO.logo.href} className="nav-logo" onClick={goTop} aria-label={`${HERO.logo.top} ${HERO.logo.bottom} — back to top`}>
+                        <span className="nav-logo-top">{HERO.logo.top}</span>
+                        <span className="nav-logo-bottom">{HERO.logo.bottom}</span>
+                    </a>
 
-                {/* Desktop Menu */}
-                <div className="nav-links desktop-only">
-                    {navLinks.map(({ label, id }) => (
+                    <div className="nav-actions">
+                        <ThemeToggle />
+                        <Magnetic strength={0.25} className="nav-talk-wrap">
+                            <a
+                                href={HERO.talk.href}
+                                className="nav-talk"
+                                onClick={() => setOpen(false)}
+                                {...(HERO.talk.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                                aria-label={HERO.talk.ariaLabel}
+                            >
+                                <WhatsAppIcon size={16} />
+                                {HERO.talk.label}
+                            </a>
+                        </Magnetic>
                         <button
-                            key={id}
-                            className={`nav-link ${activeSection === id ? 'active' : ''}`}
-                            onClick={() => scrollTo(id)}
+                            ref={toggleBtn}
+                            type="button"
+                            className={`nav-menu ${open ? 'is-x' : ''}`}
+                            onClick={() => setOpen(o => !o)}
+                            aria-expanded={open}
+                            aria-controls="site-menu"
+                            aria-label={open ? 'Close menu' : 'Open menu'}
                         >
-                            {label}
+                            <i aria-hidden="true" />
+                            <i aria-hidden="true" />
                         </button>
-                    ))}
+                    </div>
                 </div>
+            </header>
 
-                {/* Get In Touch CTA */}
-                <a
-                    href="https://wa.me/971589556227"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary desktop-only hire-btn"
-                >
-                    Get In Touch
-                </a>
-
-                {/* Mobile Toggle */}
-                <button
-                    className="menu-toggle mobile-only"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {isOpen ? <X size={22} /> : <Menu size={22} />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-                {navLinks.map(({ label, id }) => (
-                    <button
-                        key={id}
-                        className={`mobile-link ${activeSection === id ? 'active' : ''}`}
-                        onClick={() => scrollTo(id)}
-                    >
-                        {label}
-                    </button>
-                ))}
-                <a
-                    href="https://wa.me/971589556227"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                    onClick={closeMenu}
-                >
-                    Get In Touch
-                </a>
-            </div>
-        </nav>
+            <MenuOverlay open={open} active={active} onClose={close} />
+        </>
     );
 };
 

@@ -1,0 +1,159 @@
+/* Manifesto — words light up on scroll */
+.manifesto {
+    max-width: 22ch;
+    margin-left: auto;
+    font-size: clamp(2rem, 4.6vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    text-wrap: pretty;
+}
+.manifesto em {
+    color: var(--accent-fg);
+    letter-spacing: -0.02em;
+}
+
+.about-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(40px, 7vw, 120px);
+    margin-top: clamp(80px, 11vw, 160px);
+}
+
+/* Focus index rows */
+.focus {
+    border-top: 1px solid var(--line-2);
+}
+.focus-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 24px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line-2);
+}
+.focus-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s var(--ease);
+}
+.focus-row:hover::before {
+    transform: scaleX(1);
+}
+.focus-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-fg);
+}
+.focus-title {
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    transition: transform 0.6s var(--ease);
+}
+.focus-row:hover .focus-title {
+    transform: translateX(8px);
+}
+.focus-text {
+    color: var(--text-2);
+    font-size: 0.97rem;
+}
+
+.about-side {
+    display: grid;
+    gap: 32px;
+    align-content: start;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-2);
+}
+.facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+.facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    padding-top: 3px;
+}
+.facts dd {
+    color: var(--text);
+    text-align: right;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: clamp(80px, 10vw, 140px);
+    border-top: 1px solid var(--line-2);
+}
+.stat {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    padding: 28px clamp(12px, 2vw, 28px) 0 0;
+}
+.stat + .stat {
+    padding-left: clamp(12px, 2vw, 28px);
+    border-left: 1px solid var(--line);
+}
+.stat-value {
+    font-size: clamp(3.2rem, 7vw, 6.4rem);
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    font-variant-numeric: tabular-nums;
+}
+.stat:first-child .stat-value {
+    color: var(--accent-fg);
+}
+.stat-label {
+    max-width: 200px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--text-2);
+}
+
+@media (max-width: 960px) {
+    .about-split {
+        grid-template-columns: 1fr;
+    }
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 40px;
+    }
+    .stat:nth-child(3) {
+        padding-left: 0;
+        border-left: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .manifesto {
+        max-width: none;
+    }
+    .focus-row {
+        grid-template-columns: 40px minmax(0, 1fr);
+        gap: 8px 12px;
+    }
+    .focus-text {
+        grid-column: 2;
+    }
+}

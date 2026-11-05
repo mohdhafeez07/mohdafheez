@@ -1,0 +1,299 @@
+/* ── Section ─────────────────────────────────────────── */
+.fan {
+    /* Section palette (dark theme default; light theme below) */
+    --fan-bg: #111112;
+    --fan-ink: #f4f4ed;
+    --fan-muted: rgba(244, 244, 237, 0.6);
+    --fan-line: rgba(244, 244, 237, 0.16);
+
+    /* Card geometry */
+    --card-w: 18rem;
+    --stage-h: 36rem;
+    --fan-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: relative;
+    overflow-x: clip;
+    padding-top: clamp(88px, 11vw, 150px);
+    background: var(--fan-bg);
+    color: var(--fan-ink);
+}
+:root[data-theme='light'] .fan {
+    --fan-bg: #f4f4ed;
+    --fan-ink: #111112;
+    --fan-muted: rgba(17, 17, 18, 0.6);
+    --fan-line: rgba(17, 17, 18, 0.16);
+}
+
+.fan-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Small animated mark above the heading */
+.fan-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 22px;
+    fill: var(--accent);
+    animation: fanSpin 12s linear infinite;
+}
+:root[data-theme='light'] .fan-icon {
+    fill: var(--fan-ink);
+}
+@keyframes fanSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Heading: each line rises through an oval mask ──── */
+.fan-title {
+    display: grid;
+    justify-items: center;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+.fan-line {
+    display: block;
+    padding: 0 0.1em 0.08em;
+    clip-path: ellipse(100% 120% at 50% 0%);
+}
+.fan-line-inner {
+    display: block;
+    will-change: transform;
+}
+.fan-sans {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+.fan-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* ── Stage & cards ───────────────────────────────────── */
+.fan-stage {
+    position: relative;
+    width: 100%;
+    height: var(--stage-h);
+    margin-top: clamp(28px, 4vw, 56px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fan-card {
+    --p: 1; /* entrance progress: 0 = stacked at centre, 1 = fanned */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--card-w);
+    aspect-ratio: 4 / 7;
+    margin-left: calc(var(--card-w) / -2);
+    margin-top: calc(var(--card-w) * 7 / 4 / -2);
+    transform-origin: center;
+    transform: translate(calc(var(--x) * var(--p)), calc(var(--y) * var(--p))) rotate(calc(var(--r) * var(--p)))
+        scale(calc(0.8 + (var(--s) - 0.8) * var(--p)));
+    transition: transform 0.6s var(--fan-ease);
+    will-change: transform;
+}
+.fan.is-entering .fan-card {
+    transition: none;
+}
+.fan-card[hidden] {
+    display: none;
+}
+
+.fan-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--card-w) / 6); /* 3rem at 18rem wide */
+    overflow: clip;
+    background: #1c1c1f;
+    box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    transition: box-shadow 0.6s var(--fan-ease);
+    -webkit-tap-highlight-color: transparent;
+}
+.fan-card.is-active .fan-link {
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.fan-link:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.fan-media,
+.fan-media img,
+.fan-media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.fan-media img,
+.fan-media video {
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.9s var(--fan-ease);
+}
+.fan-card.is-active .fan-media img,
+.fan-card.is-active .fan-media video {
+    transform: scale(1.05);
+}
+
+/* ── Hover / focus overlay ───────────────────────────── */
+.fan-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+    padding: 4.5rem 1.4rem 1.5rem;
+    text-align: left;
+    color: #fff;
+    background: linear-gradient(to top, rgba(8, 8, 10, 0.92) 0%, rgba(8, 8, 10, 0.7) 45%, transparent 100%);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.45s var(--fan-ease), transform 0.6s var(--fan-ease);
+}
+.fan-card.is-active .fan-overlay {
+    opacity: 1;
+    transform: none;
+}
+.fan-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+.fan-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.75);
+}
+.fan-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2px;
+}
+.fan-tags li {
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 0.7rem;
+    line-height: 1.4;
+}
+.fan-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+.fan-cta svg {
+    transition: transform 0.5s var(--fan-ease);
+}
+.fan-card.is-active .fan-cta svg {
+    transform: translateX(4px);
+}
+
+/* ── Footer row ──────────────────────────────────────── */
+.fan-foot {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    margin-top: clamp(40px, 5vw, 64px);
+}
+.fan-explore {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+}
+.fan-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 28px;
+}
+.fan-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fan-muted);
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: color 0.3s, background-size 0.5s var(--fan-ease);
+}
+.fan-links a:hover,
+.fan-links a:focus-visible {
+    color: var(--fan-ink);
+    background-size: 100% 1px;
+}
+
+/* Soft fade into the accent, then back to the page background */
+.fan-fade {
+    height: clamp(7rem, 14vw, 12rem);
+    margin-top: clamp(48px, 6vw, 80px);
+    background: linear-gradient(
+        to bottom,
+        var(--fan-bg) 0%,
+        color-mix(in srgb, var(--accent) 34%, var(--fan-bg)) 62%,
+        var(--bg) 100%
+    );
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .fan {
+        --card-w: 15rem;
+        --stage-h: 31rem;
+    }
+}
+@media (max-width: 640px) {
+    .fan {
+        --card-w: 11rem;
+        --stage-h: 23rem;
+    }
+    .fan-overlay {
+        gap: 5px;
+        padding: 3rem 0.9rem 1rem;
+    }
+    .fan-card-title {
+        font-size: 0.95rem;
+    }
+    .fan-card-desc {
+        font-size: 0.7rem;
+    }
+    .fan-tags li {
+        padding: 2px 7px;
+        font-size: 0.6rem;
+    }
+    .fan-cta {
+        font-size: 0.72rem;
+    }
+}
+
+/* Reduced motion: static fan, overlay still appears on hover/focus */
+@media (prefers-reduced-motion: reduce) {
+    .fan-icon {
+        animation: none;
+    }
+    .fan-card,
+    .fan-media img {
+        transition: none;
+    }
+}

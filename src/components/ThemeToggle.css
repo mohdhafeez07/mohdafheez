@@ -1,0 +1,31 @@
+.theme-toggle {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 12px;
+    border: 1px solid var(--line-2);
+    background: var(--tint-1);
+    color: var(--text);
+    overflow: hidden;
+    transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.theme-toggle:hover {
+    border-color: var(--line-3);
+    background: var(--tint-2);
+}
+
+.theme-icon {
+    grid-area: 1 / 1;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translateY(14px) rotate(-60deg);
+    transition: opacity 0.35s var(--ease), transform 0.5s var(--ease);
+}
+.theme-icon.is-on {
+    opacity: 1;
+    transform: none;
+}
