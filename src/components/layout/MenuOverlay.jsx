@@ -105,7 +105,7 @@ const MenuOverlay = ({ open, active, onClose }) => {
                     <a href={PROFILE.resume} download="Mohammed_Afheez_CV.pdf" className="mo-resume">
                         <Download size={16} /> Download CV
                     </a>
-                    <p className="mo-label">{HERO.availability.city}, UAE — {time}</p>
+                    <p className="mo-label">{HERO.availability.city}, UAE · {time}</p>
                 </div>
             </div>
         </div>

@@ -2,43 +2,26 @@ import { ArrowUp, ArrowUpRight, Lock } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import Magnetic from '../components/Magnetic';
 import { FEATURED, PRIVATE_WORK } from '../data/content';
-import { MOTION_OK, gsap, useGSAP } from '../lib/motion';
 import rinoLogo from '../assets/logos/rino.webp';
-import { useRef } from 'react';
 import './Work.css';
 
 const pad = n => String(n).padStart(2, '0');
 
 /**
- * Case study — the deep dive behind the "Selected Projects" fan.
+ * Case study: the deep dive behind the "Selected Projects" fan.
  * Live client sites are shown once, in the fan; this section adds what the
  * fan can't: the Rino Properties build in detail and private enterprise work.
  */
 const Work = () => {
-    const root = useRef(null);
-
-    useGSAP(
-        () => {
-            const mm = gsap.matchMedia();
-            // Case-study image opens from an inset frame to full bleed.
-            mm.add(MOTION_OK, () => {
-                const st = { trigger: '.case-media', start: 'top 92%', end: 'top 15%', scrub: true };
-                gsap.fromTo('.case-media', { clipPath: 'inset(0% 8% 0% 8% round 20px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: st });
-                gsap.fromTo('.case-media img', { scale: 1.22 }, { scale: 1, ease: 'none', scrollTrigger: { ...st } });
-            });
-        },
-        { scope: root }
-    );
-
     return (
-        <section id="work" className="section work" ref={root} tabIndex={-1}>
+        <section id="work" className="section work" tabIndex={-1}>
             <div className="container">
                 <SectionHeader
                     index={3}
                     label="Case study"
                     aside={FEATURED.period}
                     title={<>Inside the <span className="serif accent">build.</span></>}
-                    lead="A closer look at the platform I lead today — from the listing backend to how it's found on search."
+                    lead="A closer look at the platform I lead today, from the listing backend to the CRM lead pipeline."
                 />
 
                 <div className="case-head">
@@ -54,18 +37,6 @@ const Work = () => {
                     </div>
                 </div>
             </div>
-
-            <a
-                href={FEATURED.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="case-media"
-                data-cursor="view"
-                data-cursor-label="Visit site"
-                aria-label="Visit rinoproperties.com"
-            >
-                <img src={FEATURED.imageWide} alt="Rino Properties homepage with property search and Dubai / Spain entry points" loading="lazy" decoding="async" width="1440" height="810" />
-            </a>
 
             <div className="container case-body">
                 <dl className="case-meta" data-reveal="fade">

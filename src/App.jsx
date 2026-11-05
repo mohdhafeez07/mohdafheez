@@ -89,8 +89,8 @@ function App() {
             <Navbar />
             <main id="main" ref={main} tabIndex={-1}>
                 <Hero />
-                <FeaturedFan />
                 <About />
+                <FeaturedFan />
                 <Experience />
                 <Work />
                 <Skills />

@@ -1,6 +1,5 @@
 // Single source of truth for portfolio content (mirrors Mohammed_Afheez_CV).
 import rinoImg from '../assets/projects/rino.webp';
-import rinoWideImg from '../assets/projects/rino-wide.webp';
 import desertImg from '../assets/projects/desertways.webp';
 import zufirosImg from '../assets/projects/zufiros.webp';
 import thermoImg from '../assets/projects/thermo.webp';
@@ -29,8 +28,8 @@ export const PROFILE = {
 };
 
 export const NAV = [
-    { id: 'projects', label: 'Projects' },
     { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'work', label: 'Case study' },
     { id: 'skills', label: 'Skills' },
@@ -46,19 +45,19 @@ export const STATS = [
 
 export const FOCUS = [
     {
-        icon: 'layers',
-        title: 'Full-stack product builds',
-        text: 'Next.js and React front ends backed by Node.js or Spring Boot APIs, deployed on Vercel and AWS.',
+        title: 'Frontend',
+        text: 'Fast, responsive interfaces in Next.js and React, typed with TypeScript and styled with Tailwind CSS.',
+        tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     },
     {
-        icon: 'workflow',
-        title: 'CRM & lead automation',
-        text: 'Website forms piped into Bitrix24 with email workflows, WhatsApp Business API and spam protection.',
+        title: 'Backend & APIs',
+        text: 'Secure REST APIs in Node.js and Java Spring Boot, with JWT authentication and role-based access control.',
+        tags: ['Node.js', 'Spring Boot', 'REST APIs', 'JWT'],
     },
     {
-        icon: 'search',
-        title: 'Technical SEO & AEO',
-        text: 'Schema.org, llms.txt and multilingual keyword strategy that gets sites indexed by AI search engines.',
+        title: 'Cloud & Data',
+        text: 'PostgreSQL and MySQL data layers deployed on AWS, Vercel and Docker, connected to CRMs like Bitrix24.',
+        tags: ['AWS', 'Vercel', 'PostgreSQL', 'Docker'],
     },
 ];
 
@@ -66,17 +65,16 @@ export const FEATURED = {
     name: 'Rino Properties',
     url: 'https://rinoproperties.com',
     image: rinoImg,
-    imageWide: rinoWideImg,
     category: 'Real Estate · Dubai & Spain',
-    period: '2026 — Present',
+    period: '2026 to Present',
     role: 'Full-Stack Developer, Rino Invest Group',
-    scope: ['Website redesign', 'Listing admin & REST API', 'CRM lead pipeline', 'SEO, AEO & analytics'],
+    scope: ['Website redesign', 'Listing admin & REST API', 'CRM lead pipeline', 'Analytics & tracking'],
     summary:
-        'Luxury real-estate platform for Rino Invest Group covering off-plan and ready properties across Dubai and Spain. I redesigned the site and own it end-to-end — from the listing backend to search visibility.',
+        'Luxury real-estate platform for Rino Invest Group covering off-plan and ready properties across Dubai and Spain. I redesigned the site and own it end-to-end, from the listing backend to the lead pipeline.',
     highlights: [
         'Property-listing admin panel and REST backend synced with the Bitrix24 Property API',
         'Automated lead pipeline from site forms into Bitrix24 CRM, secured with Cloudflare Turnstile',
-        'Technical SEO & AEO — Schema.org, llms.txt, multilingual keywords — plus GTM, GA4 and Google Ads tracking',
+        'Google Tag Manager, GA4 and Google Ads tracking across every brand site',
         'Project-launch landing pages, deployed on Vercel and AWS App Runner with Amazon S3',
     ],
     tags: ['Next.js', 'React', 'Node.js', 'Bitrix24', 'AWS App Runner', 'S3', 'Vercel'],
@@ -89,7 +87,7 @@ export const PROJECTS = [
         url: 'https://www.desertwaysdubai.com',
         image: desertImg,
         desc: 'Desert-safari booking site with tour packages, galleries and instant WhatsApp booking.',
-        tags: ['PHP', 'WhatsApp API', 'SEO'],
+        tags: ['PHP', 'WhatsApp API'],
     },
     {
         name: 'Zufiros Pharmaceuticals',
@@ -97,8 +95,8 @@ export const PROJECTS = [
         url: 'https://www.zufiros.com',
         repo: 'https://github.com/mohdhafeez07/ZUFIROS',
         image: zufirosImg,
-        desc: 'Corporate pharmaceutical website with a complete product catalogue and SEO optimisation.',
-        tags: ['React', 'PHP', 'SEO'],
+        desc: 'Corporate pharmaceutical website with a complete product catalogue.',
+        tags: ['React', 'PHP'],
     },
     {
         name: 'Diamond Construction',
@@ -114,7 +112,7 @@ export const PROJECTS = [
         category: 'Construction',
         url: 'https://thermolineroa.netlify.app',
         image: thermoImg,
-        desc: 'Company website for a UAE road-marking contractor — thermoplastic, cold-plastic and runway marking services.',
+        desc: 'Company website for a UAE road-marking contractor: thermoplastic, cold-plastic and runway marking services.',
         tags: ['React', 'Netlify'],
     },
     {
@@ -147,7 +145,7 @@ export const EXPERIENCE = [
         role: 'Full-Stack Developer',
         company: 'Rino Invest Group',
         context: 'Real Estate & Investment (Dubai & Spain)',
-        period: '06/2026 — Present',
+        period: '06/2026 to Present',
         location: 'Dubai, UAE',
         current: true,
         points: [
@@ -155,14 +153,14 @@ export const EXPERIENCE = [
             'Architected a property-listing admin panel and REST backend, synchronised with the Bitrix24 Property API.',
             'Built an automated lead pipeline from website forms into Bitrix24 CRM with email workflows; integrating WhatsApp Business API.',
             'Secured all lead forms with Cloudflare Turnstile, blocking spam submissions to the CRM.',
-            'Led technical SEO and AEO across all sites — Schema.org, llms.txt and multilingual keyword strategy — achieving indexing by AI search engines.',
+            'Led technical SEO and AEO across all sites with Schema.org, llms.txt and a multilingual keyword strategy, achieving indexing by AI search engines.',
             'Implemented Google Tag Manager, GA4 and Google Ads tracking, and redesigned rinoproperties.com with project launch landing pages.',
         ],
     },
     {
         role: 'Full-Stack Developer & IT Support',
         company: 'Phoenix Dison Tec LLC',
-        period: '04/2025 — 06/2026',
+        period: '04/2025 to 06/2026',
         location: 'Dubai, UAE',
         points: [
             'Developed enterprise ERP modules (HRMS, CRM, Payroll, Inventory) with React, Angular, Node.js, TypeScript and PostgreSQL.',
@@ -173,7 +171,7 @@ export const EXPERIENCE = [
     {
         role: 'Software Developer',
         company: 'Molsys Pvt Ltd',
-        period: '09/2024 — 03/2025',
+        period: '09/2024 to 03/2025',
         location: 'India',
         points: [
             'Built Java Spring Boot backend services and REST APIs for production systems, including DNAlyst, a health-tech platform (MySQL, JPA, JWT).',
@@ -183,7 +181,7 @@ export const EXPERIENCE = [
     {
         role: 'Full-Stack Development Intern',
         company: 'Yenepoya Technology Incubator',
-        period: '05/2024 — 08/2024',
+        period: '05/2024 to 08/2024',
         location: 'India',
         points: [
             'Built responsive web applications with JavaScript, PHP and MySQL, including schema design and query optimisation.',
@@ -194,14 +192,14 @@ export const EXPERIENCE = [
 export const EDUCATION = {
     degree: 'B.E. in Computer Science and Engineering',
     school: 'P.A. College of Engineering',
-    period: '2020 — 2024',
+    period: '2020 to 2024',
     location: 'Mangalore, India',
 };
 
 export const CERTIFICATIONS = [
     'Oracle Cloud Infrastructure',
     'Search Engine Optimization (SEO)',
-    'Deloitte Australia — Data Analytics Job Simulation',
+    'Deloitte Australia: Data Analytics Job Simulation',
     'Java',
     'Python',
     'AI & Machine Learning',
@@ -250,7 +248,7 @@ export const LANGUAGES = ['English', 'Hindi', 'Malayalam', 'Kannada', 'Tamil'];
 
 export const FAN_PROJECTS = [
     { title: 'Molsys Scientific', desc: 'Laboratory analysis & scientific-services portal.', tags: ['React', 'Web'], image: fanMolsys, url: 'https://molsys.in' },
-    { title: 'Zufiros Pharmaceuticals', desc: 'Corporate site with a full product catalogue.', tags: ['React', 'PHP', 'SEO'], image: fanZufiros, url: 'https://www.zufiros.com' },
+    { title: 'Zufiros Pharmaceuticals', desc: 'Corporate site with a full product catalogue.', tags: ['React', 'PHP'], image: fanZufiros, url: 'https://www.zufiros.com' },
     { title: 'Desert Ways Dubai', desc: 'Desert-safari booking with instant WhatsApp.', tags: ['PHP', 'WhatsApp API'], image: fanDesert, url: 'https://www.desertwaysdubai.com' },
     { title: 'Rino Properties', desc: 'Luxury real estate across Dubai & Spain, synced to Bitrix24.', tags: ['Next.js', 'Node.js', 'AWS'], image: fanRino, url: 'https://rinoproperties.com' },
     { title: 'Diamond Construction', desc: 'Animated showcase for the Diamond Habitat project.', tags: ['React', 'Framer Motion'], image: fanDiamond, url: 'https://diamondconstruction.netlify.app' },

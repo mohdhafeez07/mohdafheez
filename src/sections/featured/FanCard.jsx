@@ -24,7 +24,7 @@ const FanCard = ({ project, index, pose, active, hidden, onActivate, onLeave, on
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fan-link"
-                aria-label={`${title} — ${desc} Built with ${tags.join(', ')}. Opens the live site in a new tab.`}
+                aria-label={`${title}. ${desc} Built with ${tags.join(', ')}. Opens the live site in a new tab.`}
                 data-cursor="view"
                 data-cursor-label="View"
                 onPointerEnter={e => e.pointerType === 'mouse' && onActivate(index)}

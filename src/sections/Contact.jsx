@@ -32,7 +32,7 @@ const Contact = () => {
     const onSubmit = e => {
         e.preventDefault();
         const subject = `Portfolio enquiry from ${form.name}`;
-        const body = `${form.message}\n\n— ${form.name}\n${form.email}`;
+        const body = `${form.message}\n\n${form.name}\n${form.email}`;
         window.location.href = `mailto:${PROFILE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         setOpened(true);
     };

@@ -63,7 +63,7 @@ const Navbar = () => {
             <header ref={header} className={`nav ${open ? 'is-open' : ''}`}>
                 <div className="nav-progress" aria-hidden="true"><span ref={progress} /></div>
                 <div className="nav-inner">
-                    <a href={HERO.logo.href} className="nav-logo" onClick={goTop} aria-label={`${HERO.logo.top} ${HERO.logo.bottom} — back to top`}>
+                    <a href={HERO.logo.href} className="nav-logo" onClick={goTop} aria-label={`${HERO.logo.top} ${HERO.logo.bottom}, back to top`}>
                         <span className="nav-logo-top">{HERO.logo.top}</span>
                         <span className="nav-logo-bottom">{HERO.logo.bottom}</span>
                     </a>

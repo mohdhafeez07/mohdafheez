@@ -105,10 +105,29 @@
     animation: skIn 0.7s var(--ease) both;
     animation-delay: calc(var(--k) * 45ms);
 }
-.sk-item-num {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-3);
+/* Tool logo: neutral by default, brand colour on hover */
+.sk-items li {
+    align-items: center;
+}
+.sk-item-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border-radius: 10px;
+    border: 1px solid var(--line-2);
+    color: var(--text-2);
+    transition: color 0.35s, border-color 0.35s, background 0.35s;
+}
+.sk-items li:hover .sk-item-icon {
+    color: var(--brand, var(--text));
+    border-color: var(--line-3);
+    background: var(--tint-2);
+}
+.tech-icon {
+    display: block;
+    flex: none;
 }
 .sk-item-name {
     font-size: 1.08rem;

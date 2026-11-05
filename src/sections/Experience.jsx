@@ -63,7 +63,7 @@ const Experience = () => {
                                     <h3 className="xp-role">{j.role}</h3>
                                     <p className="xp-company">
                                         {j.company}
-                                        {j.context && <span> — {j.context}</span>}
+                                        {j.context && <span> · {j.context}</span>}
                                     </p>
                                 </div>
                                 <ul className="xp-points">

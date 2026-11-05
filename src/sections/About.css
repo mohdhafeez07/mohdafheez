@@ -20,6 +20,46 @@
     margin-top: clamp(80px, 11vw, 160px);
 }
 
+/* Core skills highlight */
+.focus-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.focus-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+.focus-all {
+    font-size: 0.9rem;
+    color: var(--text-2);
+}
+.focus-all:hover {
+    color: var(--text);
+}
+.focus-body {
+    display: grid;
+    gap: 14px;
+}
+.focus-tags .chip {
+    color: var(--text);
+}
+.chip-icon {
+    gap: 7px;
+}
+.chip-icon .tech-icon {
+    color: var(--text-2);
+    transition: color 0.35s;
+}
+.chip-icon:hover .tech-icon {
+    color: var(--brand, var(--text));
+}
+
 /* Focus index rows */
 .focus {
     border-top: 1px solid var(--line-2);
@@ -153,7 +193,7 @@
         grid-template-columns: 40px minmax(0, 1fr);
         gap: 8px 12px;
     }
-    .focus-text {
+    .focus-body {
         grid-column: 2;
     }
 }

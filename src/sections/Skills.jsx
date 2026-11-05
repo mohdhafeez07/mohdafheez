@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Braces, Cloud, Database, Monitor, Server, Wrench } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import TechIcon from '../components/TechIcon';
 import { SKILLS } from '../data/content';
 import { finePointer } from '../lib/motion';
 import './Skills.css';
@@ -24,7 +25,7 @@ const Skills = () => {
                     label="Skills"
                     aside={`${TOTAL} technologies`}
                     title={<>Tools of the <span className="serif accent">trade.</span></>}
-                    lead="What I use in production — from the interface down to the database and the cloud it runs on."
+                    lead="What I use in production, from the interface down to the database and the cloud it runs on."
                 />
 
                 <ul className="sk">
@@ -55,7 +56,7 @@ const Skills = () => {
                                     <ul className="sk-items">
                                         {g.items.map((item, k) => (
                                             <li key={item} style={{ '--k': k }}>
-                                                <span className="sk-item-num">{pad(k + 1)}</span>
+                                                <span className="sk-item-icon"><TechIcon name={item} size={18} /></span>
                                                 <span className="sk-item-name">{item}</span>
                                             </li>
                                         ))}

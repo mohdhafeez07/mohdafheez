@@ -27,7 +27,7 @@ export const HERO = {
         [{ text: 'That' }, { gap: true }, { text: 'perform.', style: 'outline' }],
     ],
     /** Read by screen readers / search engines as part of the <h1>. */
-    headlineContext: `${PROFILE.name}, full-stack developer in Dubai —`,
+    headlineContext: `${PROFILE.name}, full-stack developer in Dubai.`,
 
     /** "Let's talk" opens a WhatsApp chat with a pre-typed greeting. */
     talk: {
@@ -44,8 +44,8 @@ export const HERO = {
         label: 'Pages',
         links: [
             { label: 'Home', href: '#top' },
-            { label: 'Projects', href: '#projects' },
             { label: 'About', href: '#about' },
+            { label: 'Projects', href: '#projects' },
             { label: 'Contact', href: '#contact' },
         ],
         resume: { label: 'Resume', href: PROFILE.resume, download: 'Mohammed_Afheez_CV.pdf' },
